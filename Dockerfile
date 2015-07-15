@@ -20,7 +20,7 @@ RUN docker-php-ext-install intl opcache mbstring
 RUN pecl channel-discover pear.twig-project.org \
   && pecl install twig/CTwig \
   && (echo extension=twig.so > /usr/local/etc/php/conf.d/twig.ini) \
-  && pecl install gmagick \
+  && pecl install gmagick-beta \
   && (echo extension=gmagick.so > /usr/local/etc/php/conf.d/gmagick.ini)
 
 RUN (yes '' | pecl install mongo) \
