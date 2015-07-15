@@ -3,7 +3,8 @@ MAINTAINER Alexey Zakhlestin <indeyets@gmail.com>
 
 # OS dependencies
 RUN apt-get update && apt-get install -y \
-    libicu52 libicu-dev build-essential libssl-dev
+    libicu52 libicu-dev build-essential libssl-dev \
+    libgraphicsmagick1-dev
 
 # configuration
 RUN (echo 'date.timezone=UTC' > /usr/local/etc/php/php.ini) \
@@ -18,7 +19,9 @@ RUN docker-php-ext-install intl opcache mbstring
 # external extensions
 RUN pecl channel-discover pear.twig-project.org \
   && pecl install twig/CTwig \
-  && (echo extension=twig.so > /usr/local/etc/php/conf.d/twig.ini)
+  && (echo extension=twig.so > /usr/local/etc/php/conf.d/twig.ini) \
+  && pecl install gmagick \
+  && (echo extension=gmagick.so > /usr/local/etc/php/conf.d/gmagick.ini)
 
 RUN (yes '' | pecl install mongo) \
   && (echo extension=mongo.so > /usr/local/etc/php/conf.d/mongo.ini)
