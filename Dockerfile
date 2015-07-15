@@ -14,7 +14,7 @@ RUN (echo 'date.timezone=UTC' > /usr/local/etc/php/php.ini) \
   && (echo 'env[REDIS_PORT_6379_TCP_PORT] = $REDIS_PORT_6379_TCP_PORT' >> /usr/local/etc/php-fpm.conf)
 
 # bundled extensions
-RUN docker-php-ext-install intl opcache mbstring
+RUN docker-php-ext-install exif intl mbstring opcache
 
 # external extensions
 RUN pecl channel-discover pear.twig-project.org \
