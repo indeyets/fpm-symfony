@@ -21,7 +21,8 @@ RUN pecl channel-discover pear.twig-project.org \
   && pecl install twig/CTwig \
   && (echo extension=twig.so > /usr/local/etc/php/conf.d/twig.ini) \
   && pecl install gmagick-beta \
-  && (echo extension=gmagick.so > /usr/local/etc/php/conf.d/gmagick.ini)
-
-RUN (yes '' | pecl install mongo) \
+  && (echo extension=gmagick.so > /usr/local/etc/php/conf.d/gmagick.ini) \
+  && pecl install redis \
+  && (echo extension=redis.so > /usr/local/etc/php/conf.d/redis.ini) \
+  && (yes '' | pecl install mongo) \
   && (echo extension=mongo.so > /usr/local/etc/php/conf.d/mongo.ini)
