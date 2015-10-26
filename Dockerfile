@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
 RUN (echo 'date.timezone=UTC' > /usr/local/etc/php/php.ini) \
   && (echo 'upload_max_filesize = 100M' >> /usr/local/etc/php/php.ini) \
   && (echo 'post_max_size = 100M' >> /usr/local/etc/php/php.ini) \
+  && (echo "" >> /usr/local/etc/php-fpm.conf) \
   && (echo 'env[MONGO_PORT_27017_TCP_ADDR] = $MONGO_PORT_27017_TCP_ADDR' >> /usr/local/etc/php-fpm.conf) \
   && (echo 'env[MONGO_PORT_27017_TCP_PORT] = $MONGO_PORT_27017_TCP_PORT' >> /usr/local/etc/php-fpm.conf) \
   && (echo 'env[REDIS_PORT_6379_TCP_ADDR] = $REDIS_PORT_6379_TCP_ADDR' >> /usr/local/etc/php-fpm.conf) \
